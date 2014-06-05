@@ -1,6 +1,6 @@
 // Generated on 2013-09-19 using generator-angular 0.4.0
 'use strict';
-var LIVERELOAD_PORT = 35729;
+var LIVERELOAD_PORT = 35728;
 var lrSnippet = require('connect-livereload')({
     port: LIVERELOAD_PORT
 });
@@ -92,7 +92,8 @@ module.exports = function (grunt) {
     var yeomanConfig = {
         app: 'app',
         dist: 'dist',
-        doc: 'doc'
+        doc: 'doc',
+        server: 'server'
     };
 
     try {
@@ -163,7 +164,7 @@ module.exports = function (grunt) {
         connect: {
             options: {
                 protocol: 'http',
-                port: 9000,
+                port: 9001,
                 // Change this to '0.0.0.0' to access the server from outside.
                 hostname: 'localhost'
             },
@@ -174,6 +175,7 @@ module.exports = function (grunt) {
                             delayApiCalls,
                             lrSnippet,
                             mountFolder(connect, '.tmp'),
+                            mountFolder(connect, yeomanConfig.server),
                             mountFolder(connect, yeomanConfig.app),
                             httpMethods
                         ];
@@ -185,6 +187,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             mountFolder(connect, '.tmp'),
+                            mountFolder(connect, yeomanConfig.server),
                             mountFolder(connect, yeomanConfig.app),
                             mountFolder(connect, 'test')
                         ];
@@ -196,6 +199,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             delayApiCalls,
+                            mountFolder(connect, yeomanConfig.server),
                             mountFolder(connect, yeomanConfig.dist),
                             httpMethods
                         ];
@@ -396,7 +400,6 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '.htaccess',
-                        'api/**',
                         'images/{,*/}*.{gif,webp}',
                         'resources/**',
                         'styles/fonts/*',
