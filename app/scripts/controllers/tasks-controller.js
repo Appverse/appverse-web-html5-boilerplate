@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('appverseClientIncubatorApp')
+angular.module('boilerplateApp')
 
-.controller('taskController', ['$log', '$scope', '$state', '$rootScope',
+.controller('taskController', ['$log', '$scope',
 
-    function ($log, $scope, $state, $rootScope) {
+    function ($log, $scope) {
         $log.debug('taskController loading');
 
         $scope.addTask = function () {

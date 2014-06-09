@@ -7,7 +7,7 @@
 
 'use strict';
 
-angular.module('appverseClientIncubatorApp')
+angular.module('boilerplateApp')
     .config(
     ['$stateProvider', '$urlRouterProvider',
       function ($stateProvider, $urlRouterProvider) {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appverseClientIncubatorApp')
+angular.module('boilerplateApp')
 
 .controller('homeController', ['$log', '$scope', '$state', '$rootScope',
 

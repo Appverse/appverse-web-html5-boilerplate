@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('appverseClientIncubatorApp', ['COMMONAPI'])
-
+angular.module('boilerplateApp', ['COMMONAPI'])
 
 .run(['$rootScope', '$location', '$log', 'AuthenticationService', 'RoleService', 'AUTHORIZATION_DATA', 'SECURITY_GENERAL',
     function ($rootScope, $location, $log, AuthenticationService, RoleService, AUTHORIZATION_DATA, SECURITY_GENERAL) {

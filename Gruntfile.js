@@ -131,16 +131,11 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
-//            ,
-//            karma: {
-//                files: ['app/scripts/**/*.js', 'test/unit/**/*.js'],
-//                tasks: ['karma:unit:run']
-//            }
-//            ,
-//            doc: {
-//                files: ['{.tmp,<%= yeoman.app %>}/scripts/**/*.js'],
-//                tasks: ['docular']
-//            }
+            //            ,
+            //            doc: {
+            //                files: ['{.tmp,<%= yeoman.app %>}/scripts/**/*.js'],
+            //                tasks: ['docular']
+            //            }
         },
         autoprefixer: {
             options: ['last 1 version'],
@@ -164,7 +159,7 @@ module.exports = function (grunt) {
         connect: {
             options: {
                 protocol: 'http',
-                port: 9001,
+                port: 9090,
                 // Change this to '0.0.0.0' to access the server from outside.
                 hostname: 'localhost'
             },
@@ -465,8 +460,28 @@ module.exports = function (grunt) {
         },
         karma: {
             unit: {
-                configFile: 'karma.conf.js',
-                background: true
+                configFile: './test/karma-unit.conf.js',
+                autoWatch: false,
+                singleRun: true
+            },
+            unit_auto: {
+                configFile: './test/karma-unit.conf.js'
+            },
+            midway: {
+                configFile: './test/karma-midway.conf.js',
+                autoWatch: false,
+                singleRun: true
+            },
+            midway_auto: {
+                configFile: './test/karma-midway.conf.js'
+            },
+            e2e: {
+                configFile: './test/karma-e2e.conf.js',
+                autoWatch: false,
+                singleRun: true
+            },
+            e2e_auto: {
+                configFile: './test/karma-e2e.conf.js'
             }
         },
         cdnify: {
@@ -528,28 +543,33 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-docular');
 
-    grunt.registerTask('server', function (target) {
-        if (target === 'dist') {
-            return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
-        }
-
-        grunt.task.run([
-            'clean:server',
-            'concurrent:server',
-            'autoprefixer',
-            'connect:livereload',
-            'open:server',
-            'watch'
-        ]);
-    });
-
-    grunt.registerTask('test', [
+    grunt.registerTask('server', [
         'clean:server',
         'concurrent:server',
         'autoprefixer',
-        'connect:test',
-        'karma'
+        'connect:livereload',
+        'open:server',
+        'watch'
     ]);
+
+    grunt.registerTask('testserver', [
+        'clean:server',
+        'concurrent:server',
+        'autoprefixer',
+        'connect:test'
+    ]);
+
+    grunt.registerTask('test', ['testserver', 'karma:unit', 'karma:midway', 'karma:e2e']);
+    grunt.registerTask('test:unit', ['karma:unit']);
+    grunt.registerTask('test:midway', ['testserver', 'karma:midway']);
+    grunt.registerTask('test:e2e', ['testserver', 'karma:e2e']);
+
+    //keeping these around for legacy use
+    grunt.registerTask('autotest', ['autotest:unit']);
+    grunt.registerTask('autotest:unit', ['karma:unit_auto']);
+    grunt.registerTask('autotest:midway', ['testserver', 'karma:midway_auto']);
+    grunt.registerTask('autotest:e2e', ['testserver', 'karma:e2e_auto']);
+
 
     grunt.registerTask('devmode', [
         'karma:unit',
