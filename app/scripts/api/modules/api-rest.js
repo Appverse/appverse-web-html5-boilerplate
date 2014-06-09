@@ -28,10 +28,10 @@
  * configuration.
  */
 
-angular.module('AppREST', ['restangular', 'AppCache', 'AppConfiguration'])
+angular.module('AppREST', ['restangular', 'AppConfiguration'])
 
-.run(['$log', 'Restangular', 'CacheFactory', 'REST_CONFIG',
-    function ($log, Restangular, CacheFactory, REST_CONFIG) {
+.run(['$log', 'Restangular', 'REST_CONFIG', 'CACHE_CONFIG', '$http',
+    function ($log, Restangular, REST_CONFIG, CACHE_CONFIG, $http) {
 
         $log.info('AppREST run');
 
@@ -48,9 +48,10 @@ angular.module('AppREST', ['restangular', 'AppCache', 'AppConfiguration'])
         Restangular.setResponseInterceptor(
             function (data, operation, what, url, response) {
 
-                var cache = CacheFactory.getHttpCache();
+                if (CACHE_CONFIG.HttpCache_Enabled) {
 
-                if (cache) {
+                    var cache = $http.defaults.cache;
+
                     if (REST_CONFIG.NoCacheHttpMethods[operation] === true) {
                         cache.removeAll();
                     } else if (operation === 'put') {
@@ -129,7 +130,7 @@ angular.module('AppREST', ['restangular', 'AppCache', 'AppConfiguration'])
             Then, use the var in templates:
             <li ng-repeat="person in people">{{person.Name}}</li>
          */
-       /**
+        /**
          * @ngdoc method
          * @name AppREST.factory:RESTFactory#readList
          * @methodOf AppREST.factory:RESTFactory
@@ -141,7 +142,7 @@ angular.module('AppREST', ['restangular', 'AppCache', 'AppConfiguration'])
             return Restangular.all(path).getList().$object;
         };
 
-       /**
+        /**
          * @ngdoc method
          * @name AppREST.factory:RESTFactory#readListItem
          * @methodOf AppREST.factory:RESTFactory
@@ -169,7 +170,7 @@ angular.module('AppREST', ['restangular', 'AppCache', 'AppConfiguration'])
         };
 
 
-       /**
+        /**
          * @ngdoc method
          * @name AppREST.factory:RESTFactory#createListItem
          * @methodOf AppREST.factory:RESTFactory
@@ -217,7 +218,7 @@ angular.module('AppREST', ['restangular', 'AppCache', 'AppConfiguration'])
         };
 
 
-       /**
+        /**
          * @ngdoc method
          * @name AppREST.factory:RESTFactory#deleteObject
          * @methodOf AppREST.factory:RESTFactory
