@@ -60,7 +60,6 @@ module.exports = function () {
             'app/scripts/api/directives/*.js',
             'app/scripts/app.js',
             'app/scripts/controllers/*.js',
-            'app/scripts/factories/*.js',
             'app/scripts/states/*.js',
 
             //Test-Specific Code

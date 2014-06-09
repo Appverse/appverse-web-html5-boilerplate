@@ -8,7 +8,7 @@ describe("Midway: Testing Controllers", function () {
         if (tester) {
             tester.destroy();
         }
-        tester = ngMidwayTester('App');
+        tester = ngMidwayTester('boilerplateApp');
     });
 
     it('should load the view home.html properly when /home route is accessed', function (done) {

@@ -3,7 +3,7 @@
 //
 describe("Unit: Testing Controllers", function() {
 
-  beforeEach(App = angular.mock.module('App'));
+  beforeEach(App = angular.mock.module('boilerplateApp'));
 
   it('should have a homeController controller', function() {
     expect(App.homeController).not.to.equal(null);

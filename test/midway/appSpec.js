@@ -6,7 +6,7 @@ describe("Midway: Testing Modules", function () {
 
         var module;
         before(function () {
-            module = angular.module("App");
+            module = angular.module("boilerplateApp");
         });
 
         it("should be registered", function () {
@@ -20,7 +20,7 @@ describe("Midway: Testing Modules", function () {
                 return deps.indexOf(m) >= 0;
             };
             before(function () {
-                deps = module.value('App').requires;
+                deps = module.value('boilerplateApp').requires;
             });
 
             //you can also test the module's dependencies
