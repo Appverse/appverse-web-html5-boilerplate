@@ -65,7 +65,7 @@
                  will set the links to 'active' if, for example on the first link, 'contacts' or any of
                  its descendant states are activated. -->
                         <li data-ng-class="{ active: $state.includes('home') }">
-                            <a ui-sref="home">Home</a>
+                            <a ui-sref="home"><i class="icon-home"></i> Home</a>
                         </li>
                         <li data-ng-class="{ active: $state.includes('tasks') }">
                             <a ui-sref="tasks">Task list</a>
@@ -86,10 +86,10 @@
      -->
     <div ui-view class="myslide" autoscroll="false"></div>
 
-    <script src="https://plus.google.com/js/client:plusone.js"></script>
+    <!--    <script src="https://plus.google.com/js/client:plusone.js"></script>-->
 
     <!-- Temporary solution based on CDN. For development purpose only -->
-    <!--    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>-->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
 
     <!-- build:js scripts/scripts.js -->
     <script src="bower_components/jquery/jquery.min.js"></script>
@@ -99,7 +99,6 @@
     <script src="bower_components/jquery-flot/jquery.flot.js"></script>
     <script src="bower_components/jquery-flot/jquery.flot.resize.js"></script>
     <script src="bower_components/jquery-flot/jquery.flot.time.js"></script>
-    <!-- endbuild -->
 
     <!-- uibootstrap -->
     <script src="bower_components/bootstrap-sass/js/bootstrap-affix.js"></script>

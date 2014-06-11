@@ -5,6 +5,8 @@ module.exports = function (config) {
 
     conf.browsers = ['PhantomJS'];
 
+    conf.coverageReporter.dir += 'unit';
+
     conf.files = conf.files.concat([
 
         {

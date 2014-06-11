@@ -8,16 +8,36 @@ describe("Midway: Testing Controllers", function () {
         if (tester) {
             tester.destroy();
         }
-        tester = ngMidwayTester('boilerplateApp');
+        tester = ngMidwayTester('boilerplateApp', {
+            template: '<div><div ui-view></div></div>'
+        });
     });
 
     it('should load the view home.html properly when /home route is accessed', function (done) {
         tester.visit('/home', function () {
-            tester.path().should.eq('/home');
-            var current = tester.inject('$state').current;
-            expect(current.templateUrl).to.eql('views/home.html');
-            done();
+            expect(tester.path()).to.equal('/home');
+            var current;
+            tester.until(function () {
+                current = tester.inject('$state').current;
+                return current.templateUrl;
+            }, function () {
+                expect(current.templateUrl).to.equal('views/home.html');
+                done();
+            });
         });
     });
 
+    it('should load the view tasks.html properly when /tasks route is accessed', function (done) {
+        tester.visit('/tasks', function () {
+            expect(tester.path()).to.equal('/tasks');
+            var current;
+            tester.until(function () {
+                 current = tester.inject('$state').current;
+                return current.templateUrl;
+            }, function () {
+                expect(current.templateUrl).to.equal('views/tasks/tasks.html');
+                done();
+            });
+        });
+    });
 });

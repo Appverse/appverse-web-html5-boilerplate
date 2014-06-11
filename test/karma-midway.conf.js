@@ -1,9 +1,11 @@
 var sharedConfig = require('./karma-shared.conf');
 
-module.exports = function(config) {
-  var conf = sharedConfig();
+module.exports = function (config) {
+    var conf = sharedConfig();
 
-  conf.files = conf.files.concat([
+    conf.coverageReporter.dir += 'midway';
+
+    conf.files = conf.files.concat([
     //extra testing code
     'node_modules/ng-midway-tester/src/ngMidwayTester.js',
 
@@ -15,9 +17,9 @@ module.exports = function(config) {
     'test/midway/controllers/controllersSpec.js'
   ]);
 
-  conf.proxies = {
-    '/': 'http://localhost:9090/'
-  };
+    conf.proxies = {
+        '/': 'http://localhost:9090/'
+    };
 
-  config.set(conf);
+    config.set(conf);
 };

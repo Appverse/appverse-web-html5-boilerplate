@@ -401,7 +401,8 @@ module.exports = function (grunt) {
                         'styles/images/*',
                         '*.html',
                         'views/**/*.html',
-                        'template/**/*.html'
+                        'template/**/*.html',
+                        'bower_components/bootstrap-sass/img/glyphicons-halflings*.png'
                     ]
                 }, {
                     expand: true,
