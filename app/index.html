@@ -8,7 +8,7 @@
 <!--<![endif]-->
 
 <head>
-    <title data-ng-bind="$state.current.name">Appverse Web HTML5 Incubator</title>
+    <title data-ng-bind="$state.current.name">Appverse HTML5 Boilerplate</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
@@ -27,7 +27,7 @@
 
 <!--Include the module with the app scope-->
 
-<body data-ng-app="appverseClientIncubatorApp">
+<body data-ng-app="boilerplateApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -65,7 +65,7 @@
                  will set the links to 'active' if, for example on the first link, 'contacts' or any of
                  its descendant states are activated. -->
                         <li data-ng-class="{ active: $state.includes('home') }">
-                            <a ui-sref="home">Home</a>
+                            <a ui-sref="home"><i class="icon-home"></i> Home</a>
                         </li>
                         <li data-ng-class="{ active: $state.includes('tasks') }">
                             <a ui-sref="tasks">Task list</a>
@@ -86,22 +86,24 @@
      -->
     <div ui-view class="myslide" autoscroll="false"></div>
 
-    <script src="https://plus.google.com/js/client:plusone.js"></script>
+    <!--    <script src="https://plus.google.com/js/client:plusone.js"></script>-->
 
     <!-- Temporary solution based on CDN. For development purpose only -->
-    <!--    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
 
     <!-- build:js scripts/scripts.js -->
     <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-touch/angular-touch.min.js"></script>
     <script src="bower_components/modernizr/modernizr.js"></script>
+    <!--
     <script src="bower_components/jquery-flot/jquery.flot.js"></script>
     <script src="bower_components/jquery-flot/jquery.flot.resize.js"></script>
     <script src="bower_components/jquery-flot/jquery.flot.time.js"></script>
-    <!-- endbuild -->
+    -->
 
     <!-- uibootstrap -->
+    <!--
     <script src="bower_components/bootstrap-sass/js/bootstrap-affix.js"></script>
     <script src="bower_components/bootstrap-sass/js/bootstrap-alert.js"></script>
     <script src="bower_components/bootstrap-sass/js/bootstrap-dropdown.js"></script>
@@ -115,19 +117,22 @@
     <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
     <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
     <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    -->
 
     <!-- modules -->
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <!--        <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>-->
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
 
     <!-- UI components -->
+    <!--
     <script src="bower_components/venturocket-angular-slider/build/angular-slider.min.js"></script>
-    <script src="bower_components/qrcode/lib/qrcode.min.js"></script>
-    <script src="bower_components/angular-qr/angular-qr.min.js"></script>
-    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+<script src="bower_components/qrcode/lib/qrcode.min.js"></script>
+<script src="bower_components/angular-qr/angular-qr.min.js"></script>
+<scriptsrc="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    -->
 
     <!-- ########## API modules ########## -->
 
@@ -159,19 +164,17 @@
     <script src="bower_components/angular-dynamic-locale/src/tmhDinamicLocale.js"></script>
     -->
 
-    <script src="scripts/api/modules/api-utils.js"></script>
+    <!--    <script src="scripts/api/modules/api-utils.js"></script>-->
 
     <!-- Directives should be included after the modules -->
-    <script src="scripts/api/directives/cache-directives.js"></script>
     <script src="scripts/api/directives/rest-directives.js"></script>
+    <!--    <script src="scripts/api/directives/cache-directives.js"></script>-->
+    <!--    <script src="scripts/api/directives/oauth-directives.js"></script>-->
 
     <!-- app -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/security-controllers.js"></script>
-    <script src="scripts/controllers/topics-controllers.js"></script>
-    <script src="scripts/controllers/gadgets-controllers.js"></script>
     <script src="scripts/controllers/home-controller.js"></script>
-    <script src="scripts/factories/app-factory.js"></script>
+    <script src="scripts/controllers/tasks-controller.js"></script>
     <script src="scripts/states/app-states.js"></script>
     <!-- endbuild -->
 </body>
