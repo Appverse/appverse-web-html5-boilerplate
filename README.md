@@ -14,29 +14,31 @@ Appverse Web is a multi-frontend technology capable web application framework in
 ### Quick Start
 
 #### Before you start, tools you will need
+
 * install npm
 * bower and grunt (run the following commands):
 
-`shell
+```script
 npm install -g bower
-npm install -g grunt
-`
+npm install -g grunt```
 
 ## Running
+
 * configure project:
-`shell
+
+```script
 npm install
 bower install
-`
+```
 * run project
-`shell
-grunt server
-`
+
+`grunt server`
 
 ## Testing
-`shell
-grunt test
-`
+
+Exexecute the following command to launch tests
+
+`grunt test`
 
 ## License
 
