@@ -21,20 +21,26 @@ var delayApiCalls = function (request, response, next) {
     }
 };
 
+// configurable paths
+var yeomanConfig = {
+    app: 'app',
+    dist: 'dist',
+    doc: 'doc',
+    server: 'server'
+};
+
 var httpMethods = function (request, response, next) {
 
-    console.log("request method: " + JSON.stringify(request.method));
+    console.log("\nrequest method: " + JSON.stringify(request.method));
     var rawpath = request.url.split('?')[0];
     console.log("request url: " + JSON.stringify(request.url));
-    var path = require('path').resolve(__dirname, 'app/' + rawpath);
+    var path = require('path').resolve(__dirname, '' + yeomanConfig.server + rawpath);
 
     console.log("request path : " + JSON.stringify(path));
 
     console.log("request current dir : " + JSON.stringify(__dirname));
 
     if ((request.method === 'PUT' || request.method === 'POST')) {
-
-        console.log('inside put/post');
 
         request.content = '';
 
@@ -45,21 +51,9 @@ var httpMethods = function (request, response, next) {
         request.addListener("end", function () {
             console.log("request content: " + JSON.stringify(request.content));
 
-            if (fs.existsSync(path)) {
-
-                fs.writeFile(path, request.content, function (err) {
-                    if (err) {
-                        throw err;
-                    }
-                    console.log('file saved');
-                    response.end('file was saved');
-                });
-                return;
-            }
-
             if (request.url === '/log') {
 
-                var filePath = 'server/log/server.log';
+                var filePath = yeomanConfig.server + '/log/server.log';
 
                 var logData = JSON.parse(request.content);
 
@@ -71,6 +65,44 @@ var httpMethods = function (request, response, next) {
                     response.end('log was saved');
                 });
                 return;
+            }
+
+            var endSuccess = function (response, err, successMessage) {
+                if (err) {
+                    throw err;
+                }
+                console.log(successMessage);
+                response.writeHead(200, {
+                    'Content-Type': 'text/plain'
+                });
+                response.end(successMessage);
+            };
+
+            var endError = function (response, errorMessage) {
+                console.error(errorMessage);
+                response.writeHead(500, {
+                    'Content-Type': 'text/plain'
+                });
+                response.end(errorMessage);
+            };
+
+            if (fs.existsSync(path)) {
+
+                if (request.method === 'PUT') {
+                    fs.writeFile(path, request.content, function (err) {
+                        endSuccess(response, err, 'File was updated successfully.');
+                    });
+                } else {
+                    endError(response, 'File already exist so cannot create it. Please use PUT method to update existing files.');
+                }
+            } else {
+                if (request.method === 'POST') {
+                    fs.writeFile(path, request.content, function (err) {
+                        endSuccess(response, err, 'File was created successfully.');
+                    });
+                } else {
+                    endError(response, 'File does not exist so cannot update it. Please use POST method to create files.');
+                }
             }
         });
         return;
@@ -87,14 +119,6 @@ var httpMethods = function (request, response, next) {
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     require('time-grunt')(grunt);
-
-    // configurable paths
-    var yeomanConfig = {
-        app: 'app',
-        dist: 'dist',
-        doc: 'doc',
-        server: 'server'
-    };
 
     try {
         yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;

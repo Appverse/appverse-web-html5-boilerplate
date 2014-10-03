@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="styles/animations.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/ng-grid/ng-grid.min.css" />
     <!-- endbuild -->
 </head>
 
@@ -92,84 +93,64 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
 
     <!-- build:js scripts/scripts.js -->
-    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-touch/angular-touch.min.js"></script>
     <script src="bower_components/modernizr/modernizr.js"></script>
-    <!--
     <script src="bower_components/jquery-flot/jquery.flot.js"></script>
     <script src="bower_components/jquery-flot/jquery.flot.resize.js"></script>
     <script src="bower_components/jquery-flot/jquery.flot.time.js"></script>
-    -->
 
     <!-- uibootstrap -->
-    <!--
-    <script src="bower_components/bootstrap-sass/js/bootstrap-affix.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-alert.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-dropdown.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-tooltip.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-modal.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-transition.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-button.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-popover.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-typeahead.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-carousel.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
-    <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
+    <script src="bower_components/bootstrap-sass/js/transition.js"></script>
+    <script src="bower_components/bootstrap-sass/js/collapse.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    -->
 
     <!-- modules -->
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
-    <!--        <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>-->
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-cache/dist/angular-cache.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/ng-grid/build/ng-grid.debug.js"></script>
 
     <!-- UI components -->
-    <!--
     <script src="bower_components/venturocket-angular-slider/build/angular-slider.min.js"></script>
-<script src="bower_components/qrcode/lib/qrcode.min.js"></script>
-<script src="bower_components/angular-qr/angular-qr.min.js"></script>
-<scriptsrc="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
-    -->
+    <script src="bower_components/qrcode/lib/qrcode.min.js"></script>
+    <script src="bower_components/angular-qr/angular-qr.min.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
 
     <!-- ########## API modules ########## -->
-
-    <!-- Cache module -->
-    <script src="bower_components/angular-cache/dist/angular-cache.min.js"></script>
-    <script src="scripts/api/modules/api-cache.js"></script>
-
-    <script src="scripts/api/modules/api-configuration.js"></script>
-    <script src="scripts/api/modules/api-detection.js"></script>
-    <script src="scripts/api/modules/api-logging.js"></script>
-    <script src="scripts/api/modules/api-main.js"></script>
+    <script src="bower_components/appverse-web-html5-core/src/modules/api-cache.js"></script>
+    <script src="bower_components/appverse-web-html5-core/src/modules/api-configuration.js"></script>
+    <script src="bower_components/appverse-web-html5-core/src/modules/api-detection.js"></script>
+    <script src="bower_components/appverse-web-html5-core/src/modules/api-logging.js"></script>
+    <script src="bower_components/appverse-web-html5-core/src/modules/api-main.js"></script>
 
     <!-- REST module -->
     <script src="bower_components/lodash/dist/lodash.underscore.min.js"></script>
     <script src="bower_components/restangular/dist/restangular.min.js"></script>
-    <script src="scripts/api/modules/api-rest.js"></script>
+    <script src="bower_components/appverse-web-html5-core/src/modules/api-rest.js"></script>
 
     <!-- Security module -->
-    <script src="scripts/api/modules/api-security.js"></script>
+    <script src="bower_components/appverse-web-html5-security/src/modules/api-security.js"></script>
 
     <!-- Server Push module -->
-    <!--    <script src="scripts/api/modules/api-serverpush.js"></script>-->
+    <script src="bower_components/socket.io-client/dist/socket.io.min.js"></script>
+    <script src="bower_components/appverse-web-html5-core/src/modules/api-serverpush.js"></script>
 
     <!-- Translate module -->
-    <!--
-    <script src="scripts/api/modules/api-translate.js"></script>
+    <script src="bower_components/appverse-web-html5-core/src/modules/api-translate.js"></script>
     <script src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
-    <script src="bower_components/angular-dynamic-locale/src/tmhDinamicLocale.js"></script>
-    -->
+    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
 
-    <!--    <script src="scripts/api/modules/api-utils.js"></script>-->
+    <script src="bower_components/appverse-web-html5-core/src/modules/api-utils.js"></script>
 
     <!-- Directives should be included after the modules -->
-    <script src="scripts/api/directives/rest-directives.js"></script>
-    <!--    <script src="scripts/api/directives/cache-directives.js"></script>-->
-    <!--    <script src="scripts/api/directives/oauth-directives.js"></script>-->
+    <script src="bower_components/appverse-web-html5-core/src/directives/cache-directives.js"></script>
+    <script src="bower_components/appverse-web-html5-core/src/directives/rest-directives.js"></script>
+    <script src="bower_components/appverse-web-html5-core/src/modules/api-performance.js"></script>
 
     <!-- app -->
     <script src="scripts/app.js"></script>

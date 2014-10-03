@@ -1,111 +1,58 @@
-$iconSpritePath:"../bower_components/bootstrap-sass/img/glyphicons-halflings.png";
-$iconWhiteSpritePath:"../bower_components/bootstrap-sass/img/glyphicons-halflings-white.png";
-
-/*!
- * Bootstrap v2.3.1
- *
- * Copyright 2012 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Designed and built with all the love in the world @twitter by @mdo and @fat.
- */
-
 // Core variables and mixins
-@import "bootstrap-sass/lib/variables"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap-sass/lib/variables";
 @import "bootstrap-sass/lib/mixins";
 
-// CSS Reset
-@import "bootstrap-sass/lib/reset";
+// Reset
+@import "bootstrap-sass/lib/normalize";
+@import "bootstrap-sass/lib/print";
 
-// Grid system and page structure
+// Core CSS
 @import "bootstrap-sass/lib/scaffolding";
-@import "bootstrap-sass/lib/grid";
-@import "bootstrap-sass/lib/layouts";
-
-// Base CSS
 @import "bootstrap-sass/lib/type";
 @import "bootstrap-sass/lib/code";
-@import "bootstrap-sass/lib/forms";
+@import "bootstrap-sass/lib/grid";
 @import "bootstrap-sass/lib/tables";
-
-// Components: common
-@import "bootstrap-sass/lib/sprites";
-@import "bootstrap-sass/lib/dropdowns";
-@import "bootstrap-sass/lib/wells";
-@import "bootstrap-sass/lib/component-animations";
-@import "bootstrap-sass/lib/close";
-
-// Components: Buttons & Alerts
+@import "bootstrap-sass/lib/forms";
 @import "bootstrap-sass/lib/buttons";
-@import "bootstrap-sass/lib/button-groups";
-@import "bootstrap-sass/lib/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons
 
-// Components: Nav
+// Components
+@import "bootstrap-sass/lib/component-animations";
+@import "bootstrap-sass/lib/glyphicons";
+@import "bootstrap-sass/lib/dropdowns";
+@import "bootstrap-sass/lib/button-groups";
+@import "bootstrap-sass/lib/input-groups";
 @import "bootstrap-sass/lib/navs";
 @import "bootstrap-sass/lib/navbar";
 @import "bootstrap-sass/lib/breadcrumbs";
 @import "bootstrap-sass/lib/pagination";
 @import "bootstrap-sass/lib/pager";
+@import "bootstrap-sass/lib/labels";
+@import "bootstrap-sass/lib/badges";
+@import "bootstrap-sass/lib/jumbotron";
+@import "bootstrap-sass/lib/thumbnails";
+@import "bootstrap-sass/lib/alerts";
+@import "bootstrap-sass/lib/progress-bars";
+@import "bootstrap-sass/lib/media";
+@import "bootstrap-sass/lib/list-group";
+@import "bootstrap-sass/lib/panels";
+@import "bootstrap-sass/lib/wells";
+@import "bootstrap-sass/lib/close";
 
-// Components: Popovers
+// Components w/ JavaScript
 @import "bootstrap-sass/lib/modals";
 @import "bootstrap-sass/lib/tooltip";
 @import "bootstrap-sass/lib/popovers";
-
-// Components: Misc
-@import "bootstrap-sass/lib/thumbnails";
-@import "bootstrap-sass/lib/media";
-@import "bootstrap-sass/lib/labels-badges";
-@import "bootstrap-sass/lib/progress-bars";
-@import "bootstrap-sass/lib/accordion";
 @import "bootstrap-sass/lib/carousel";
-@import "bootstrap-sass/lib/hero-unit";
 
 // Utility classes
-@import "bootstrap-sass/lib/utilities"; // Has to be last to override when necessary
-
-
-/*
-http://getbootstrap.com/2.3.2/components.html#navbar
-Add .navbar-fixed-top and remember to account for the hidden area underneath it by adding at least 40px padding to the <body>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.
-*/
-body {
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-/*!
- * Bootstrap Responsive v2.3.1
- *
- * Copyright 2012 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Designed and built with all the love in the world @twitter by @mdo and @fat.
- */
-
-// RESPONSIVE CLASSES
-// ------------------
-
+@import "bootstrap-sass/lib/utilities";
 @import "bootstrap-sass/lib/responsive-utilities";
 
-
-// MEDIA QUERIES
-// ------------------
-
-// Large desktops
-@import "bootstrap-sass/lib/responsive-1200px-min";
-
-// Tablets to regular desktops
-@import "bootstrap-sass/lib/responsive-768px-979px";
-
-// Phones to portrait tablets and narrow desktops
-@import "bootstrap-sass/lib/responsive-767px-max";
-
-
-// RESPONSIVE NAVBAR
-// ------------------
-
-// From 979px and below, show a button to toggle navbar contents
-@import "bootstrap-sass/lib/responsive-navbar";
+/*
+http://getbootstrap.com/components/#navbar-fixed-top
+The fixed navbar will overlay your other content, unless you add padding to the top of the <body>. Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high.
+Make sure to include this after the core Bootstrap CSS.
+*/
+body {
+    padding-top: 70px;
+}

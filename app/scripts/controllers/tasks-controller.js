@@ -12,5 +12,8 @@ angular.module('boilerplateApp')
                 name: $scope.newTask,
                 done: false
             });
+
+            /* Using Restangular method */
+            $scope.tasks.put();
         };
     }]);
