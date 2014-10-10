@@ -561,12 +561,19 @@ module.exports = function (grunt) {
                     ]
                 }
             ]
+        },
+	    license: {
+	       options: {             
+	       },
+            licence: {
+                output:'licenses.json'
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-docular');
+    grunt.loadNpmTasks('grunt-license');
 
     grunt.registerTask('server', [
         'clean:server',
