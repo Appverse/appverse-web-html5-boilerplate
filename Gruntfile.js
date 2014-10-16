@@ -255,7 +255,8 @@ module.exports = function (grunt) {
                     ]
                 }]
             },
-            server: '.tmp'
+            server: '.tmp',
+	    doc:'doc'
         },
         jshint: {
             options: {
@@ -312,6 +313,12 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     debugInfo: true
+                }
+            },
+            dev_dist: {
+                options: {
+                    debugInfo: true,
+                    cssDir: '<%= yeoman.dist %>/styles'
                 }
             }
         },
@@ -410,6 +417,17 @@ module.exports = function (grunt) {
         },
         // Put files not handled in other tasks here
         copy: {
+	    dev_dist: {
+	    	files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>',
+                    dest: '<%= yeoman.dist %>',
+                    src: [
+                        '**'
+                    ]
+		}]
+	    },
             dist: {
                 files: [{
                     expand: true,
@@ -562,9 +580,7 @@ module.exports = function (grunt) {
                 }
             ]
         },
-	    license: {
-	       options: {             
-	       },
+	license: {
             licence: {
                 output:'licenses.json'
             }
@@ -610,7 +626,12 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('doc', [
-        'docular',
+    	'clean:doc',
+        'docular'
+    ]);
+    
+    grunt.registerTask('doc:watch', [
+        'doc',
         'connect:doc',
         'open:doc',
         'watch:doc'
@@ -631,14 +652,21 @@ module.exports = function (grunt) {
         'uglify',
         'rev',
         'usemin',
-        'htmlmin',
-        'connect:dist',
- //        'docular',
- //        'connect:doc',
-        'open:server',
- //        'open:doc',
-        'watch'
+        'htmlmin'
     ]);
+    
+    grunt.registerTask('dist:dev', [
+        'clean:dist',
+        'copy:dev_dist',
+        'compass:dev_dist'
+    ]);
+
+grunt.registerTask('dist:watch', [
+    	'dist',
+        'connect:dist',
+        'open:server',
+        'watch'
+     ]);
 
     grunt.registerTask('default', [
         'server'
