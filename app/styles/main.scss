@@ -1,7 +1,3 @@
-@import "fade";
-@import "grid";
-
-/* Put main CSS here */
 body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -24,59 +20,58 @@ body {
     line-height: 1;
     letter-spacing: -1px;
 }
-
 /*** Start of venturocket-angular-slider ***/
-
 /* Slider: in IE10/11 an annoying tooltip will show up unless you add the following css */
+
 ::-ms-tooltip {
     display: none;
 }
 
 slider {
-    display:     block;
-    position:    relative;
-    height:      20px;
-    width:       300px;
+    display: block;
+    position: relative;
+    height: 20px;
+    width: 300px;
 }
 
 slider span.bar {
-    height:     50%;
-    z-index:    0;
+    height: 50%;
+    z-index: 0;
     background: #ace;
-    left:       0;
-    top:        25%;
-    cursor:     pointer;
+    left: 0;
+    top: 25%;
+    cursor: pointer;
     border-radius: 10px;
 }
 
 slider span.bar.selection {
     background: #0a0;
-    opacity:    0.5;
+    opacity: 0.5;
 }
 
 slider span.bar.unselected {
-    width:      auto;
+    width: auto;
     background: #a00;
-    opacity:    0.5;
+    opacity: 0.5;
 }
 
 slider span.pointer {
-    cursor:           pointer;
-    width:            20px;
-    top:              0;
-    bottom:           0;
+    cursor: pointer;
+    width: 20px;
+    top: 0;
+    bottom: 0;
     background-color: #00a;
     border-radius: 20px;
 }
 
 slider span.bubble {
-    font-size:   1.2em;
+    font-size: 1.2em;
     line-height: 1.4em;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-align:  center;
+    text-align: center;
     text-shadow: none;
-    top:         -1.3em;
-    cursor:      pointer;
+    top: -1.3em;
+    cursor: pointer;
 }
 
 slider span.bubble.selection {
@@ -86,5 +81,4 @@ slider span.bubble.selection {
 slider span.bubble.limit {
     top: -1.1em;
 }
-
 /*** End of venturocket-angular-slider ***/

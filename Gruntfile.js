@@ -255,7 +255,8 @@ module.exports = function (grunt) {
                     ]
                 }]
             },
-            server: '.tmp'
+            server: '.tmp',
+	    doc:'doc'
         },
         jshint: {
             options: {
@@ -313,6 +314,12 @@ module.exports = function (grunt) {
                 options: {
                     debugInfo: true
                 }
+            },
+            dev_dist: {
+                options: {
+                    debugInfo: true,
+                    cssDir: '<%= yeoman.dist %>/styles'
+            }
             }
         },
         uglify: {
@@ -410,6 +417,17 @@ module.exports = function (grunt) {
         },
         // Put files not handled in other tasks here
         copy: {
+	    dev_dist: {
+	    	files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>',
+                    dest: '<%= yeoman.dist %>',
+                    src: [
+                        '**'
+                    ]
+		}]
+	    },
             dist: {
                 files: [{
                     expand: true,
@@ -562,9 +580,7 @@ module.exports = function (grunt) {
                 }
             ]
         },
-	    license: {
-	       options: {             
-	       },
+	license: {
             licence: {
                 output:'licenses.json'
             }
@@ -574,6 +590,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-license');
+    grunt.loadNpmTasks('grunt-docular');
 
     grunt.registerTask('server', [
         'clean:server',
@@ -609,7 +626,12 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('doc', [
-        'docular',
+    	'clean:doc',
+        'docular'
+    ]);
+    
+    grunt.registerTask('doc:watch', [
+        'doc',
         'connect:doc',
         'open:doc',
         'watch:doc'
@@ -630,12 +652,19 @@ module.exports = function (grunt) {
         'uglify',
         'rev',
         'usemin',
-        'htmlmin',
+        'htmlmin'
+    ]);
+    
+    grunt.registerTask('dist:dev', [
+        'clean:dist',
+        'copy:dev_dist',
+        'compass:dev_dist'
+    ]);
+
+grunt.registerTask('dist:watch', [
+    	'dist',
         'connect:dist',
- //        'docular',
- //        'connect:doc',
         'open:server',
- //        'open:doc',
         'watch'
     ]);
 
