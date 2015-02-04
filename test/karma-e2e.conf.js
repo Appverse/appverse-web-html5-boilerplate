@@ -1,3 +1,5 @@
+"use strict";
+
 var sharedConfig = require('./karma-shared.conf');
 
 module.exports = function (config) {
@@ -5,10 +7,10 @@ module.exports = function (config) {
 
     conf.coverageReporter.dir += 'e2e';
 
-    conf.files = conf.files.concat([
-    //test files
-    './test/e2e/**/*.js'
-  ]);
+    conf.files = [
+        'app/scripts/**',
+        'test/e2e/**/*.js'
+    ];
 
     conf.proxies = {
         '/': 'http://localhost:9090/',
