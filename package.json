@@ -50,5 +50,9 @@
   },
   "scripts": {
     "test": "grunt test"
+  },
+  "dependencies": {
+    "grunt-license": "^0.1.5",
+    "treeify": "^1.0.1"
   }
 }

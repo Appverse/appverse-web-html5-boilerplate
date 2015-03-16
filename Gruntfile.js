@@ -319,7 +319,7 @@ module.exports = function (grunt) {
                 options: {
                     debugInfo: true,
                     cssDir: '<%= yeoman.dist %>/styles'
-                }
+            }
             }
         },
         uglify: {
@@ -666,7 +666,7 @@ grunt.registerTask('dist:watch', [
         'connect:dist',
         'open:server',
         'watch'
-     ]);
+    ]);
 
     grunt.registerTask('default', [
         'server'

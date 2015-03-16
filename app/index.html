@@ -15,14 +15,18 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- build:css(.tmp) styles/styles.css -->
-    <link rel="stylesheet" href="styles/bootstrap.css">
+    <!-- build:css styles/vendor.css -->
     <link rel="stylesheet" href="styles/jquery.mobile-1.3.2.min.css">
     <link rel="stylesheet" href="styles/angular-jqm.css">
-    <link rel="stylesheet" href="styles/animations.css">
-    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
     <link rel="stylesheet" type="text/css" href="bower_components/ng-grid/ng-grid.min.css" />
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) styles/styles.css -->
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/grid.css">
+    <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
 
@@ -42,40 +46,37 @@
      This is the unnamed root, aka index.html
      You can place here your views in the ui-view points.
     -->
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
+    <nav class="navbar navbar-default navbar-fixed-top">
 
-                <!-- ui-sref is a directive from ui-router for linking a state location with an anchor link.
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- ui-sref is a directive from ui-router for linking a state location with an anchor link.
                  We should almost always use ui-sref instead of href on our links when we want
                  then to navigate to a state. When this link is clicked it will take the application
                  to the 'home' state. Behind the scenes the directive also adds the correct href attr
                  and url. -->
-                <a class="brand" ui-sref="home">Project name</a>
+            <a class="navbar-brand" ui-sref="home">Project name</a>
+        </div>
 
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-
-                        <!-- Here you can see ui-sref in action again. Also notice the use of $state.includes, which
+        <div class="collapse navbar-collapse" id="main-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Here you can see ui-sref in action again. Also notice the use of $state.includes, which
                  will set the links to 'active' if, for example on the first link, 'contacts' or any of
                  its descendant states are activated. -->
-                        <li data-ng-class="{ active: $state.includes('home') }">
-                            <a ui-sref="home"><i class="icon-home"></i> Home</a>
-                        </li>
-                        <li data-ng-class="{ active: $state.includes('tasks') }">
-                            <a ui-sref="tasks">Task list</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                <li data-ng-class="{ active: $state.includes('home') }">
+                    <a ui-sref="home">Home</a>
+                </li>
+                <li data-ng-class="{ active: $state.includes('tasks') }">
+                    <a ui-sref="tasks">Task list</a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
     <!-- MAIN INSERTION POINT
          Here is the main ui-view (it is unnamed) as the main content insertion point.
@@ -102,8 +103,8 @@
     <script src="bower_components/jquery-flot/jquery.flot.time.js"></script>
 
     <!-- uibootstrap -->
-    <script src="bower_components/bootstrap-sass-sass-official/vendor/assets/javascripts/bootstrapjs/transition.js"></script>
-    <script src="bower_components/bootstrap-sass-sass-official/vendor/assets/javascripts/bootstrapjs/collapse.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
     <!-- modules -->
@@ -112,7 +113,7 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angular-cache/dist/angular-cache.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="bower_components/ng-grid/build/ng-grid.debug.js"></script>
+    <script src="bower_components/ng-grid/build/ng-grid.min.js"></script>
 
     <!-- UI components -->
     <script src="bower_components/venturocket-angular-slider/build/angular-slider.min.js"></script>
